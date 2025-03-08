@@ -1,14 +1,13 @@
 import 'package:get/get.dart';
 import './screen/home_screen.dart';
-import './screen/second_screen.dart';
 
 List<GetPage> pageRoutes = [
   GetPage(
     name: '/visitkl',
-    page: () => const HomeScreen(),
-  ),
-  GetPage(
-    name: '/visitkl/second',
-    page: () => const SecondScreen(),
+    page: () {
+      final ssoToken = Get.parameters['sso_token'];
+      print('ssoToken from visitkl: $ssoToken');
+      return HomeScreen(ssoToken: ssoToken);
+    },
   ),
 ];
